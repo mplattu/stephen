@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import sys
+import subprocess
+
+while True:
+	try:
+		sayThis = subprocess.check_output(['zenity', '--entry'])
+	except subprocess.CalledProcessError:
+		sys.exit(1)
+		
+	subprocess.run(['venv/bin/google_speech', '-l', 'fi', sayThis])
+
